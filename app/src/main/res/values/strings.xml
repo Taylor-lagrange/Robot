@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Robot</string>
+    <string name="background">background</string>
+    <string name="image_cell_carousel">image_spot</string>
+    <string name="textview_title_ticket">售票大厅</string>
+    <string name="textView_name_ticket">景点名称</string>
+    <string name="textView_time_ticket">开放时间</string>
+    <string name="textView_price_ticket">价格(元)</string>
+    <string name="image_back_ticket">返回</string>
+    <string name="textView_warn_carousel">没有图片数据！</string>
+
+</resources>

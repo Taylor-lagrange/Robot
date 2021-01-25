@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="5dp"
+    tools:layout_editor_absoluteY="18dp">
+
+    <ImageView
+        android:id="@+id/popBackground"
+        android:layout_width="493dp"
+        android:layout_height="385dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageView
+        android:id="@+id/popImage"
+        android:layout_width="301dp"
+        android:layout_height="373dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/popBackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flower" />
+
+    <TextView
+        android:id="@+id/popTitle"
+        android:layout_width="139dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="47dp"
+        android:text="纪念品商店"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/popIntroduceButton"
+        app:layout_constraintEnd_toEndOf="@+id/popImage"
+        app:layout_constraintStart_toStartOf="@+id/popImage"
+        app:layout_constraintTop_toTopOf="@+id/popBackground" />
+
+    <Button
+        android:id="@+id/popIntroduceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="详情介绍"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/popBackButton"
+        app:layout_constraintTop_toTopOf="@+id/popImage" />
+
+    <Button
+        android:id="@+id/popBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="443dp"
+        android:layout_marginRight="443dp"
+        android:text="b  a  c  k"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/popImage"
+        app:layout_constraintTop_toBottomOf="@+id/popIntroduceButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

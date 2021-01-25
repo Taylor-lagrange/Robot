@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.fragment_view">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/imageButton_back_View"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginEnd="668dp"
+            android:layout_marginRight="668dp"
+            android:layout_marginBottom="33dp"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toTopOf="@+id/scenicImage"
+            app:layout_constraintEnd_toStartOf="@+id/scenicName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/scenicName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginRight="84dp"
+            android:layout_marginBottom="338dp"
+            android:text="景点名称"
+            app:layout_constraintBottom_toTopOf="@+id/suggestedTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton_back_View"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/scenicImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:src="@drawable/robot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/suggestedTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton_back_View" />
+
+        <TextView
+            android:id="@+id/openTime"
+            android:layout_width="146dp"
+            android:layout_height="95dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="209dp"
+            android:layout_marginRight="209dp"
+            android:text="开放时间"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.538"
+            app:layout_constraintStart_toEndOf="@+id/scenicName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ticketPrice"
+            android:layout_width="87dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="104dp"
+            android:text="票价"
+            app:layout_constraintEnd_toEndOf="@+id/openTime"
+            app:layout_constraintHorizontal_bias="0.474"
+            app:layout_constraintStart_toStartOf="@+id/openTime"
+            app:layout_constraintTop_toBottomOf="@+id/openTime" />
+
+        <TextView
+            android:id="@+id/suggestedTime"
+            android:layout_width="108dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginRight="84dp"
+            android:layout_marginBottom="387dp"
+            android:text="建议游玩时间"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/scenicImage"
+            app:layout_constraintTop_toBottomOf="@+id/scenicName" />
+
+        <TextView
+            android:id="@+id/introduction"
+            android:layout_width="165dp"
+            android:layout_height="285dp"
+            android:layout_marginBottom="92dp"
+            android:text="简介"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/suggestedTime"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toStartOf="@+id/suggestedTime" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
