@@ -56,6 +56,7 @@ dependencies {
     implementation files('libs\\QWeather_Public_Android_V4.2.jar')
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'androidx.fragment:fragment:1.2.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -5,7 +5,8 @@
     android:id="@+id/clickLayout_Carousel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.carouselactivity.CarouselActivity">
+    android:clickable="true"
+    tools:context=".ui.carousel.CarouselFragment">
 
     <TextView
         android:id="@+id/textView_warn_Carousel"
