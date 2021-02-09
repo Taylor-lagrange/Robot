@@ -1,27 +1,42 @@
-package com.blueprint.robot.ui.carouselactivity;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager2.widget.ViewPager2;
+package com.blueprint.robot.ui.carousel;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blueprint.robot.MainActivity;
 import com.blueprint.robot.R;
+import com.blueprint.robot.data.ViewModel.ScenicSpotViewModel;
 import com.blueprint.robot.data.entity.ScenicSpot;
 import com.google.android.material.tabs.TabLayout;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class CarouselActivity extends AppCompatActivity {
-    private static final String TAG = "CarouselActivity";
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link CarouselFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class CarouselFragment extends Fragment {
+    private static final String TAG = "CarouselFragment";
     public static final int SCROLL = 0x101;
     public static final int LOAD_IMAGE = 0x103;
     private static final int INIT_TERM = 50;
@@ -31,7 +46,7 @@ public class CarouselActivity extends AppCompatActivity {
     private TextView textView;
     private CarouselThread carouselThread = null;
     private CarouselHandler handler = new CarouselHandler(this);
-    private CarouselViewModel carouselViewModel;
+    private ScenicSpotViewModel carouselViewModel;
     private int picNum = 0;
     private ImageView savePicture;
 
@@ -59,7 +74,7 @@ public class CarouselActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             while (isRunning) {
-                handler.sendEmptyMessage(CarouselActivity.SCROLL);
+                handler.sendEmptyMessage(SCROLL);
                 try {
                     sleep(COMMON_SLEEP);
                 } catch (InterruptedException e) {
@@ -71,9 +86,9 @@ public class CarouselActivity extends AppCompatActivity {
 
     private static class ImageLoadThread extends Thread {
         private Handler handler;
-        private CarouselViewModel carouselViewModel;
+        private ScenicSpotViewModel carouselViewModel;
         private int position;
-        public ImageLoadThread(Handler handler, CarouselViewModel carouselViewModel, int position) {
+        public ImageLoadThread(Handler handler, ScenicSpotViewModel carouselViewModel, int position) {
             this.handler = handler;
             this.carouselViewModel = carouselViewModel;
             this.position = position;
@@ -91,29 +106,53 @@ public class CarouselActivity extends AppCompatActivity {
     }
 
     private static class CarouselHandler extends Handler {
-        private WeakReference<CarouselActivity> carouselActivityWeakReference;
+        private WeakReference<CarouselFragment> carouselFragmentWeakReference;
 
-        public CarouselHandler(CarouselActivity carouselActivity) {
-            carouselActivityWeakReference = new WeakReference<CarouselActivity>(carouselActivity);
+        public CarouselHandler(CarouselFragment carouselFragment) {
+            carouselFragmentWeakReference = new WeakReference<CarouselFragment>(carouselFragment);
         }
 
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            CarouselActivity carouselActivity = carouselActivityWeakReference.get();
-            if(carouselActivity != null) {
-                if(msg.what == SCROLL && carouselActivity.getPicNum() != 0) {
-                    carouselActivity.scrollViewPager();
+            CarouselFragment carouselFragment = carouselFragmentWeakReference.get();
+            if(carouselFragment != null) {
+                if(msg.what == SCROLL && carouselFragment.getPicNum() != 0) {
+                    carouselFragment.scrollViewPager();
                 } else if(msg.what == LOAD_IMAGE) {
-                    carouselActivity.getSavePicture().setImageBitmap((Bitmap)msg.obj);
+                    carouselFragment.getSavePicture().setImageBitmap((Bitmap)msg.obj);
                 }
             }
         }
     }
 
+    public CarouselFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @return A new instance of fragment CarouselFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static CarouselFragment newInstance() {
+        CarouselFragment fragment = new CarouselFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
-    protected void onResume() {
-        super.onResume();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_carousel, container, false);
+    }
+
+    @Override
+    public void onResume() {
         super.onResume();
         if(viewPager2 != null) {
             viewPager2.setCurrentItem(
@@ -124,18 +163,28 @@ public class CarouselActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carousel);
-
-        carouselViewModel = new ViewModelProvider(this).get(CarouselViewModel.class);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        carouselViewModel = new ViewModelProvider(this).get(ScenicSpotViewModel.class);
         List<ScenicSpot> scenicSpotList = carouselViewModel.getPictureScenicSpotList();
         picNum = carouselViewModel.getPictureNum();
 
-        viewPager2 = findViewById(R.id.ViewPager2_Carousel);
-        tabLayout = findViewById(R.id.TabLayout_Carousel);
-        clickView = findViewById(R.id.clickLayout_Carousel);
-        textView = findViewById(R.id.textView_warn_Carousel);
+        viewPager2 = view.findViewById(R.id.ViewPager2_Carousel);
+        tabLayout = view.findViewById(R.id.TabLayout_Carousel);
+        clickView = view.findViewById(R.id.clickLayout_Carousel);
+        textView = view.findViewById(R.id.textView_warn_Carousel);
+
+        clickView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {//销毁当前fragment
+                MainActivity mainActivity = (MainActivity)getActivity();
+                mainActivity.setCarousel(false);
+                mainActivity.reInitTime();
+                Log.d(TAG, "onClick: ");
+                NavController navController = Navigation.findNavController(mainActivity, R.id.fragment);
+                navController.navigate(R.id.functionSelectionFragment);
+            }
+        });
 
         if(picNum == 0) {
             viewPager2.setVisibility(View.GONE);
@@ -144,19 +193,14 @@ public class CarouselActivity extends AppCompatActivity {
             return;
         }
 
-        clickView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            }
-        });
-
         viewPager2.setAdapter(new CarouselAdapter() {
             @Override
             public void endActivity() {
-                finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                MainActivity mainActivity = (MainActivity)getActivity();
+                mainActivity.setCarousel(false);
+                mainActivity.reInitTime();
+                NavController navController = Navigation.findNavController(mainActivity, R.id.fragment);
+                navController.navigate(R.id.functionSelectionFragment);
             }
 
             @Override
@@ -218,17 +262,23 @@ public class CarouselActivity extends AppCompatActivity {
         viewPager2.setCurrentItem(picNum * INIT_TERM, false);
 
         _startThread();
-
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         _endThread();
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDetach() {
+        super.onDetach();
+        _endThread();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         _endThread();
         handler.removeCallbacksAndMessages(null);

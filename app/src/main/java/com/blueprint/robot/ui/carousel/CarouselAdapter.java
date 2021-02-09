@@ -1,4 +1,4 @@
-package com.blueprint.robot.ui.carouselactivity;
+package com.blueprint.robot.ui.carousel;
 
 import android.util.Log;
 import android.view.LayoutInflater;

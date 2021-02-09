@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/calibrationFragment">
+    <fragment
+        android:id="@+id/toHomeFragment"
+        android:name="com.blueprint.robot.ui.ToHomeFragment"
+        android:label="fragment_to_home"
+        tools:layout="@layout/fragment_to_home" >
+        <action
+            android:id="@+id/action_toHomeFragment_to_functionSelectionFragment"
+            app:destination="@id/functionSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/functionSelectionFragment"
+        android:name="com.blueprint.robot.ui.Choose.FunctionSelectionFragment"
+        android:label="fragment_function_selection"
+        tools:layout="@layout/fragment_function_selection" >
+        <action
+            android:id="@+id/action_functionSelectionFragment_to_toHomeFragment"
+            app:destination="@id/toHomeFragment" />
+        <action
+            android:id="@+id/action_functionSelectionFragment_to_toGoodsFragment"
+            app:destination="@id/toGoodsFragment" />
+        <action
+            android:id="@+id/action_functionSelectionFragment_to_toShowFragment"
+            app:destination="@id/toShowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toGoodsFragment"
+        android:name="com.blueprint.robot.ui.ToGoodsFragment"
+        android:label="fragment_to_goods"
+        tools:layout="@layout/fragment_to_goods" >
+        <action
+            android:id="@+id/action_toGoodsFragment_to_functionSelectionFragment"
+            app:destination="@id/functionSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toShowFragment"
+        android:name="com.blueprint.robot.ui.ToShowFragment"
+        android:label="fragment_to_show"
+        tools:layout="@layout/fragment_to_show" >
+        <action
+            android:id="@+id/action_toShowFragment_to_functionSelectionFragment"
+            app:destination="@id/functionSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carouselFragment"
+        android:name="com.blueprint.robot.ui.carousel.CarouselFragment"
+        android:label="fragment_carousel"
+        tools:layout="@layout/fragment_carousel" />
+    <fragment
+        android:id="@+id/calibrationFragment"
+        android:name="com.blueprint.robot.ui.CalibrationFragment"
+        android:label="fragment_calibration"
+        tools:layout="@layout/fragment_calibration" >
+        <action
+            android:id="@+id/action_calibrationFragment_to_functionSelectionFragment"
+            app:destination="@id/functionSelectionFragment" />
+    </fragment>
+</navigation>

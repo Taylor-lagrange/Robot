@@ -8,5 +8,8 @@
     <string name="textView_price_ticket">价格(元)</string>
     <string name="image_back_ticket">返回</string>
     <string name="textView_warn_carousel">没有图片数据！</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="景点名称">景点名称</string>
 
 </resources>
