@@ -1,5 +1,8 @@
 package com.blueprint.robot;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,7 +11,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +23,8 @@ import androidx.navigation.Navigation;
 import com.blueprint.robot.data.ViewModel.ScenicSpotViewModel;
 import com.blueprint.robot.data.entity.ScenicSpot;
 import com.blueprint.robot.ui.carousel.CarouselFragment;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -52,6 +59,9 @@ public class MainActivity<datetime> extends AppCompatActivity {
             scenicSpotViewModel.insertScenicSpot(new ScenicSpot("粉黛草观赏区", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "每年的8月下旬到11月中旬，是粉黛乱子草盛开的季节，\n花穗呈云雾状，远看如红色云雾，十分梦幻，简直是少女心爆棚的地方。", 10));
         }
         setContentView(R.layout.activity_main2);
+        //初始化讯飞SDK，并且请求对应的语音操作权限
+        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=" + getString(R.string.app_id));
+        requestPermissions();
 
 //        //线程
 //        mTime = (TextView) findViewById(R.id.currentTime);
@@ -129,6 +139,25 @@ public class MainActivity<datetime> extends AppCompatActivity {
             return false;
         }
     });*/
+
+    private void requestPermissions(){
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                int permission = ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if(permission!= PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,new String[] {
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.LOCATION_HARDWARE,Manifest.permission.READ_PHONE_STATE,
+                            Manifest.permission.WRITE_SETTINGS,Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_CONTACTS},0x0010);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static class MainHandler extends Handler {
         private final WeakReference<MainActivity> mainActivityWeakReference;

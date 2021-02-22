@@ -1,4 +1,4 @@
-package com.iflytek.speech.util;
+package com.blueprint.robot.util;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

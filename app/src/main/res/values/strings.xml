@@ -11,5 +11,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="景点名称">景点名称</string>
+    <string name="app_id">602670c2</string>
 
 </resources>
