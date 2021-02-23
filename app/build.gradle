@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.blueprint.robot"
         minSdkVersion 15
-        targetSdkVersion 29
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         buildFeatures.dataBinding true
@@ -43,6 +43,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(name: 'eailibrary', ext: 'aar')
+    compile files('libs/Msc.jar')
+    api 'com.squareup.leakcanary:leakcanary-android:1.5'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
