@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout_Ticket"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A000000"
+    tools:context=".ui.ticketservice.TicketServiceFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_Ticket"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#1AFF9800"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1_Ticket"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Ticket"
+        app:layout_constraintStart_toEndOf="@+id/guideline_v1_Ticket"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h3_Ticket">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_inside2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.82" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_inside1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <TextView
+            android:id="@+id/Column_name_Ticket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/textView_name_ticket"
+            android:textSize="36sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_inside1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_v1_Ticket"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_inside1"
+            app:layout_constraintStart_toStartOf="@+id/guideline_inside1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Column_time_Ticket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/textView_time_ticket"
+            android:textSize="36sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_inside2"
+            app:layout_constraintStart_toStartOf="@+id/guideline_inside1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_v2_Ticket"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_inside2"
+            app:layout_constraintStart_toStartOf="@+id/guideline_inside2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Column_price_Ticket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/textView_price_ticket"
+            android:textSize="36sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_inside2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h1_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h2_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v1_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v2_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView_Ticket"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h2_Ticket"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Ticket"
+        app:layout_constraintStart_toEndOf="@+id/guideline_v1_Ticket"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h1_Ticket" />
+
+    <TextView
+        android:id="@+id/textView_Title_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_title_ticket"
+        android:textSize="45sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h3_Ticket"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Ticket"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v1_Ticket"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h3_Ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <ImageButton
+        android:id="@+id/imageButton_back_Ticket"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#00000000"
+        android:contentDescription="@string/image_back_ticket"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h3_Ticket"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v1_Ticket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
