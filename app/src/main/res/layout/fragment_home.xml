@@ -132,7 +132,7 @@
             app:layout_constraintGuide_percent="0.16" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/currentTime_Sidebar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#FCC60D"

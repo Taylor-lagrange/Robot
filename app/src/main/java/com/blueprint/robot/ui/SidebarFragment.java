@@ -114,7 +114,7 @@ public class SidebarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mTime = (TextView) getView().findViewById(R.id.currentTime_Sidebar);
-        communicationInfo = (TextView) getView().findViewById(R.id.communicationInfo);
+        //communicationInfo = getView().findViewById(R.id.communicationInfo);
     }
 
     @Override
