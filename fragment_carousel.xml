@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clickLayout_Carousel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".ui.carousel.CarouselFragment">
+
+    <TextView
+        android:id="@+id/textView_warn_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textView_warn_carousel"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v2_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h1_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ViewPager2_Carousel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h3_Carousel"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Carousel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v1_Carousel"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h2_Carousel">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h2_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h3_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v1_Carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/TabLayout_Carousel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1_Carousel"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Carousel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v1_Carousel"
+        app:layout_constraintTop_toBottomOf="@+id/ViewPager2_Carousel"
+        app:tabGravity="fill" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
