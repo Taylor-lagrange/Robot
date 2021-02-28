@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<!--背景色-->
+    <solid android:color="#FCC60D"/>
+<!--边框色-->
+    <stroke
+        android:color="#FCC60D"
+        android:width="0.5dp"/>
+<!--圆弧-->
+    <corners android:radius="20dp"/>
+</shape>
