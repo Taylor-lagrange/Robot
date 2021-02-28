@@ -6,6 +6,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -27,8 +28,8 @@ public class GoodsFragment extends Fragment {
     private static final int INIT_TERM = 50;
     public static final int PIC_NUM = 3;
     private ViewPager2 viewPager2;
-    private ImageButton buttonLeft;
-    private ImageButton buttonRight;
+    private Button buttonLeft;
+    private Button buttonRight;
     private GoodsFragment.CarouselThread carouselThread = null;
     private GoodsFragment.CarouselHandler handler = new CarouselHandler(this);
     private int picNum = PIC_NUM;
@@ -116,8 +117,8 @@ public class GoodsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewPager2 = view.findViewById(R.id.ViewPager2_goods);
-        buttonLeft = view.findViewById(R.id.imageButton_goods);
-        buttonRight = view.findViewById(R.id.imageButton2_goods);
+        buttonLeft = view.findViewById(R.id.button_pre_goods);
+        buttonRight = view.findViewById(R.id.button_next_goods);
 
         if(picNum == 0) {
             viewPager2.setVisibility(View.GONE);
