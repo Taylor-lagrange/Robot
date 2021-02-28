@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -108,7 +109,7 @@ public class ShowFragment extends Fragment {
         TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
         introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
 
-        ImageButton button=getView().findViewById(R.id.lastViewButton);
+        Button button=getView().findViewById(R.id.lastViewButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +142,7 @@ public class ShowFragment extends Fragment {
             }
         });
 
-        ImageButton button2=getView().findViewById(R.id.nextViewButton);
+        Button button2=getView().findViewById(R.id.nextViewButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

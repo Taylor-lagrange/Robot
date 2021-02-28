@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/popBackground"
-        android:layout_width="0dp"
-        android:layout_height="385dp"
+        android:layout_width="493dp"
+        android:layout_height="330dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline42"
-        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+        app:srcCompat="@drawable/button_color2" />
 
     <ImageView
         android:id="@+id/popImage"
@@ -33,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="纪念品商店"
+        android:textColor="#054123"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
@@ -44,6 +45,7 @@
         android:id="@+id/popIntroduceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_color"
         android:text="详情介绍"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
@@ -55,6 +57,7 @@
         android:id="@+id/popBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/textview_shape"
         android:text="b  a  c  k"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
@@ -67,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline37"
@@ -75,7 +78,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="17dp"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline38"
@@ -83,7 +86,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="268dp"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline39"
@@ -91,7 +94,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="365dp"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline40"
@@ -99,7 +102,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="338dp"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline41"
