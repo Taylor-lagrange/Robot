@@ -14,7 +14,7 @@
 
         <Button
             android:id="@+id/robotImage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/roundedbutton"
             android:text="机器人照片"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center|center_horizontal"
             android:text="电量"
@@ -36,7 +36,7 @@
             android:textSize="25dp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/guideline30"
-            app:layout_constraintEnd_toStartOf="@+id/guideline32"
+            app:layout_constraintEnd_toStartOf="@+id/guideline72"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline29"
@@ -48,26 +48,27 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="47dp"
-            app:layout_constraintGuide_percent="0.03" />
+            app:layout_constraintGuide_percent="0.04" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline30"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="94dp"
-            app:layout_constraintGuide_percent="0.08" />
+            app:layout_constraintGuide_begin="180dp"
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline32"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="205dp" />
+            app:layout_constraintGuide_begin="205dp"
+            app:layout_constraintGuide_percent="0.6" />
 
         <TextView
             android:id="@+id/currentTime_Sidebar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center|center_horizontal"
             android:text="时间"
@@ -83,7 +84,7 @@
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center|center_horizontal"
             android:text="wifi情况"
@@ -93,7 +94,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline30"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.669"
-            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintStart_toStartOf="@+id/guideline32"
             app:layout_constraintTop_toTopOf="@+id/guideline29"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -103,19 +104,19 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="375dp"
-            app:layout_constraintGuide_percent="0.25" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline44"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="171dp"
-            app:layout_constraintGuide_percent="0.09" />
+            app:layout_constraintGuide_begin="191dp"
+            app:layout_constraintGuide_percent="0.2" />
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center|center_horizontal"
             android:text="机器人名称"
@@ -126,12 +127,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline30"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/communicationInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center|center_horizontal"
             android:text="hiiii我是小顺，\n你可以和我交流。"
@@ -142,6 +143,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/robotImage" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline72"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
