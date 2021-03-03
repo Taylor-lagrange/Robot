@@ -81,97 +81,62 @@ public class ShowFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         final ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(requireActivity()).get(ScenicSpotViewModel.class);//通过ScenicSpotViewModel对象获取所有景点信息
         final List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
-        final ImageView imageView=getView().findViewById(R.id.showViewImage);
-
-        if (scenicSpotViewModel.getNumScenic()==1)
-        {
-            imageView.setImageResource(R.drawable.attractionimage1);
-        }
-        else
-        {
-            if (scenicSpotViewModel.getNumScenic()==2)
-            {
-                imageView.setImageResource(R.drawable.attractionimage2);
-            }
-            else
-            {
-                if (scenicSpotViewModel.getNumScenic()==3)
-                {
-                    imageView.setImageResource(R.drawable.attractionimage3);
-                }
-            }
-        }
-        TextView scenicName=getView().findViewById(R.id.showViewName);
-        scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
+        final ImageView imageView = getView().findViewById(R.id.showViewImage);
+        imageView.setImageResource(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getScenicPicUrlList().get(0));
+        TextView scenicName = getView().findViewById(R.id.showViewName);
+        scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getName());
 
 
+        TextView introduction = getView().findViewById(R.id.showViewBriefIntro);
+        introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getBriefIntro());
 
-        TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-        introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
-
-        Button button=getView().findViewById(R.id.lastViewButton);
+        Button button = getView().findViewById(R.id.lastViewButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic()-1+scenicSpotList.size())%(scenicSpotList.size()+1));
-                if (scenicSpotViewModel.getNumScenic()==1)
-                {
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() - 1 + scenicSpotList.size()) % (scenicSpotList.size() + 1));
+                if (scenicSpotViewModel.getNumScenic() == 1) {
                     imageView.setImageResource(R.drawable.attractionimage1);
-                }
-                else
-                {
-                    if (scenicSpotViewModel.getNumScenic()==2)
-                    {
+                } else {
+                    if (scenicSpotViewModel.getNumScenic() == 2) {
                         imageView.setImageResource(R.drawable.attractionimage2);
-                    }
-                    else
-                    {
-                        if (scenicSpotViewModel.getNumScenic()==3)
-                        {
+                    } else {
+                        if (scenicSpotViewModel.getNumScenic() == 3) {
                             imageView.setImageResource(R.drawable.attractionimage3);
                         }
                     }
                 }
-                TextView scenicName=getView().findViewById(R.id.showViewName);
-                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
+                TextView scenicName = getView().findViewById(R.id.showViewName);
+                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getName());
 
 
-
-                TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
+                TextView introduction = getView().findViewById(R.id.showViewBriefIntro);
+                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getBriefIntro());
             }
         });
 
-        Button button2=getView().findViewById(R.id.nextViewButton);
+        Button button2 = getView().findViewById(R.id.nextViewButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic()+1)%(scenicSpotList.size())+1);
-                if (scenicSpotViewModel.getNumScenic()==1)
-                {
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() + 1) % (scenicSpotList.size()) + 1);
+                if (scenicSpotViewModel.getNumScenic() == 1) {
                     imageView.setImageResource(R.drawable.attractionimage1);
-                }
-                else
-                {
-                    if (scenicSpotViewModel.getNumScenic()==2)
-                    {
+                } else {
+                    if (scenicSpotViewModel.getNumScenic() == 2) {
                         imageView.setImageResource(R.drawable.attractionimage2);
-                    }
-                    else
-                    {
-                        if (scenicSpotViewModel.getNumScenic()==3)
-                        {
+                    } else {
+                        if (scenicSpotViewModel.getNumScenic() == 3) {
                             imageView.setImageResource(R.drawable.attractionimage3);
                         }
                     }
                 }
-                TextView scenicName=getView().findViewById(R.id.showViewName);
-                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
+                TextView scenicName = getView().findViewById(R.id.showViewName);
+                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getName());
 
 
-
-                TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
+                TextView introduction = getView().findViewById(R.id.showViewBriefIntro);
+                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getBriefIntro());
             }
         });
     }
