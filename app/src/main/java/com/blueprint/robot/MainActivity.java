@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -27,16 +28,17 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity<datetime> extends AppCompatActivity {
 //    private static final int msgKey1 = 1;
 //    private TextView mTime;
 
-//    public static JniEAIBotUtil jniEAIBotUtil;
+    //    public static JniEAIBotUtil jniEAIBotUtil;
     private static final String TAG = "hefeng now";
     private static final int TIME_VALUE = 1000 * 60;//无操作跳转时间，单位毫秒
-//    private static final int msgKey1 = 1;
+    //    private static final int msgKey1 = 1;
 //    private TextView datetime;
     private static final int CAROUSEL_MODE = 0x102;
     private boolean isCarousel = false;
@@ -50,13 +52,36 @@ public class MainActivity<datetime> extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
         ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(this).get(ScenicSpotViewModel.class);//通过ScenicSpotViewModel对象获取所有景点信息
         List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
         if (scenicSpotList.isEmpty()) {
-            //background.setImageBitmap(scenicSpotList.get(scenicSpotList.size()-1).getLocalBitmap(0));
-            scenicSpotViewModel.insertScenicSpot(new ScenicSpot("神泉潮井", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "核心景观潮井：涨潮时，水从泉眼汩汩而出，\n如银花怒放，似珍珠滚出，间有小鱼舞动，妙趣横生。\n一涨一落持续5—10分钟，最大流量100升/秒以上。\n一年四季每日不定时涨落，多时每日涨潮七、八次，少时二、三次，\n时间不定，无规律可循，周而复始，终年不息。", 10));
-            scenicSpotViewModel.insertScenicSpot(new ScenicSpot("神泉驿站", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "神泉驿站主要由潮井湿地公园、葫芦湖、潮井神泉、瀑布等景观组成，\n有亭台水榭、品茗茶室、特色商铺、餐饮等配套设施，集吃喝玩乐于一体。", 10));
-            scenicSpotViewModel.insertScenicSpot(new ScenicSpot("粉黛草观赏区", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "每年的8月下旬到11月中旬，是粉黛乱子草盛开的季节，\n花穗呈云雾状，远看如红色云雾，十分梦幻，简直是少女心爆棚的地方。", 10));
+            for (int i = 0; i < 3; i++) {
+                ScenicSpot scenicSpot;
+                List<Integer> picList = new ArrayList<>();
+                switch (i) {
+                    case 0:
+                        scenicSpot = new ScenicSpot("神泉潮井", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "核心景观潮井：涨潮时，水从泉眼汩汩而出，\n如银花怒放，似珍珠滚出，间有小鱼舞动，妙趣横生。\n一涨一落持续5—10分钟，最大流量100升/秒以上。\n一年四季每日不定时涨落，多时每日涨潮七、八次，少时二、三次，\n时间不定，无规律可循，周而复始，终年不息。", 10);
+                        picList.add(R.drawable.attractionimage1);
+                        break;
+                    case 1:
+                        scenicSpot = new ScenicSpot("神泉驿站", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "神泉驿站主要由潮井湿地公园、葫芦湖、潮井神泉、瀑布等景观组成，\n有亭台水榭、品茗茶室、特色商铺、餐饮等配套设施，集吃喝玩乐于一体。", 10);
+                        picList.add(R.drawable.attractionimage2);
+                        break;
+                    case 2:
+                        scenicSpot = new ScenicSpot("粉黛草观赏区", "每周一到周五上午10点，周六周天上午12点", "每周一到周五晚上10点，周六周天晚上10点", 3f, "每年的8月下旬到11月中旬，是粉黛乱子草盛开的季节，\n花穗呈云雾状，远看如红色云雾，十分梦幻，简直是少女心爆棚的地方。", 10);
+                        picList.add(R.drawable.attractionimage3);
+                        break;
+                    default:
+                        scenicSpot = new ScenicSpot();
+                }
+                scenicSpot.setScenicPicUrlList(picList);
+                scenicSpotViewModel.insertScenicSpot(scenicSpot);
+            }
         }
         setContentView(R.layout.activity_main2);
         //初始化讯飞SDK，并且请求对应的语音操作权限
@@ -68,7 +93,7 @@ public class MainActivity<datetime> extends AppCompatActivity {
 //        new MainActivity.TimeThread().start();
 
 
-       // datetime = findViewById(R.id.datetime);
+        // datetime = findViewById(R.id.datetime);
 
 
         /*//天气
@@ -140,17 +165,17 @@ public class MainActivity<datetime> extends AppCompatActivity {
         }
     });*/
 
-    private void requestPermissions(){
+    private void requestPermissions() {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 int permission = ActivityCompat.checkSelfPermission(this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                if(permission!= PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this,new String[] {
+                if (permission != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{
                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.LOCATION_HARDWARE,Manifest.permission.READ_PHONE_STATE,
-                            Manifest.permission.WRITE_SETTINGS,Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_CONTACTS},0x0010);
+                            Manifest.permission.LOCATION_HARDWARE, Manifest.permission.READ_PHONE_STATE,
+                            Manifest.permission.WRITE_SETTINGS, Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_CONTACTS}, 0x0010);
                 }
             }
         } catch (Exception e) {

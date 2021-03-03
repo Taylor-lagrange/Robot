@@ -84,7 +84,7 @@ public class CarouselFragment extends Fragment {
         }
     }
 
-    private static class ImageLoadThread extends Thread {
+    private class ImageLoadThread extends Thread {
         private Handler handler;
         private ScenicSpotViewModel carouselViewModel;
         private int position;
@@ -97,7 +97,7 @@ public class CarouselFragment extends Fragment {
         @Override
         public void run() {
             super.run();
-            Bitmap bitmap = carouselViewModel.getPictureScenicSpotList().get(position).getLocalBitmap(0);
+            Bitmap bitmap = carouselViewModel.getPictureScenicSpotList().get(position).getLocalBitmap(CarouselFragment.this.getContext(),0);
             Message message = Message.obtain();
             message.obj = bitmap;
             message.what = LOAD_IMAGE;

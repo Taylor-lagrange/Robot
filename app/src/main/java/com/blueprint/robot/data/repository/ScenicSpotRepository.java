@@ -34,7 +34,7 @@ public class ScenicSpotRepository {
             ScenicSpotRepository.scenicSpotList = scenicSpotDao.getAllScenicSpot();//query all scenic spot
             for (int i = 0; i < ScenicSpotRepository.scenicSpotList.size(); i++) {
                 List<ScenicPic> scenicPicList = scenicPicDao.getScenicPicById(scenicSpotList.get(i).getId());//query all picture for each scenic spot
-                List<String> picUrl = new ArrayList<>();//get url from Scenic Picture
+                List<Integer> picUrl = new ArrayList<>();//get url from Scenic Picture
                 for (ScenicPic pic : scenicPicList)
                     picUrl.add(pic.getPicUrl());
                 ScenicSpotRepository.scenicSpotList.get(i).setScenicPicUrlList(picUrl);//set url from Scenic Picture
