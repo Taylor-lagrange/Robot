@@ -95,17 +95,7 @@ public class ShowFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() - 1 + scenicSpotList.size()) % (scenicSpotList.size() + 1));
-                if (scenicSpotViewModel.getNumScenic() == 1) {
-                    imageView.setImageResource(R.drawable.attractionimage1);
-                } else {
-                    if (scenicSpotViewModel.getNumScenic() == 2) {
-                        imageView.setImageResource(R.drawable.attractionimage2);
-                    } else {
-                        if (scenicSpotViewModel.getNumScenic() == 3) {
-                            imageView.setImageResource(R.drawable.attractionimage3);
-                        }
-                    }
-                }
+                imageView.setImageResource(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getScenicPicUrlList().get(0));
                 TextView scenicName = getView().findViewById(R.id.showViewName);
                 scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getName());
 
@@ -120,21 +110,9 @@ public class ShowFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() + 1) % (scenicSpotList.size()) + 1);
-                if (scenicSpotViewModel.getNumScenic() == 1) {
-                    imageView.setImageResource(R.drawable.attractionimage1);
-                } else {
-                    if (scenicSpotViewModel.getNumScenic() == 2) {
-                        imageView.setImageResource(R.drawable.attractionimage2);
-                    } else {
-                        if (scenicSpotViewModel.getNumScenic() == 3) {
-                            imageView.setImageResource(R.drawable.attractionimage3);
-                        }
-                    }
-                }
+                imageView.setImageResource(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getScenicPicUrlList().get(0));
                 TextView scenicName = getView().findViewById(R.id.showViewName);
                 scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getName());
-
-
                 TextView introduction = getView().findViewById(R.id.showViewBriefIntro);
                 introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1).getBriefIntro());
             }
