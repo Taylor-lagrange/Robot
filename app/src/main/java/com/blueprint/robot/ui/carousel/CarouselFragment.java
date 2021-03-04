@@ -206,7 +206,7 @@ public class CarouselFragment extends Fragment {
             @Override
             public void loadImage(ImageView imageView, int position) {
                 savePicture = imageView;
-                new ImageLoadThread(handler, carouselViewModel, position % picNum);
+                new ImageLoadThread(handler, carouselViewModel, position % picNum).run();
             }
         });
 
