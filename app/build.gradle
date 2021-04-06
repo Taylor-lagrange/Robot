@@ -44,6 +44,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(name: 'eailibrary', ext: 'aar')
     compile files('libs/Msc.jar')
+    compile files('libs/CH34xUARTDriver.jar')
     api 'com.squareup.leakcanary:leakcanary-android:1.5'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
