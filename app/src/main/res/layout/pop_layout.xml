@@ -2,30 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="493dp"
-    android:layout_height="wrap_content"
+    android:layout_width="450dp"
+    android:layout_height="300dp"
+    android:background="@drawable/button_color2"
     tools:layout_editor_absoluteX="5dp"
     tools:layout_editor_absoluteY="18dp">
 
-    <ImageView
-        android:id="@+id/popBackground"
-        android:layout_width="493dp"
-        android:layout_height="330dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline42"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline42"
-        app:srcCompat="@drawable/button_color2" />
 
     <ImageView
         android:id="@+id/popImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintEnd_toStartOf="@+id/guideline40"
         app:layout_constraintStart_toStartOf="@+id/guideline39"
-        app:layout_constraintTop_toTopOf="@+id/guideline38"
+        app:layout_constraintTop_toTopOf="@+id/guideline80"
         app:srcCompat="@drawable/flower" />
 
     <TextView
@@ -35,10 +28,12 @@
         android:text="纪念品商店"
         android:textColor="#054123"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
+        app:layout_constraintEnd_toEndOf="@+id/popImage"
         app:layout_constraintEnd_toStartOf="@+id/guideline40"
-        app:layout_constraintStart_toStartOf="@+id/guideline39"
+        app:layout_constraintStart_toStartOf="@+id/popImage"
         app:layout_constraintTop_toTopOf="@+id/guideline36" />
 
     <Button
@@ -110,7 +105,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="440dp"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.98" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline42"
@@ -119,5 +114,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="176dp"
         app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="50dp"
+        app:layout_constraintGuide_percent="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

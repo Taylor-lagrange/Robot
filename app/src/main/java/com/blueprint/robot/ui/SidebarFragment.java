@@ -1,9 +1,12 @@
 package com.blueprint.robot.ui;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -17,12 +20,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blueprint.robot.CH34xUARTDriverHelper;
 import com.blueprint.robot.R;
 import com.blueprint.robot.util.HttpUtil;
 import com.blueprint.robot.util.JsonParser;
 import com.blueprint.robot.util.MyRecognizerListener;
 import com.blueprint.robot.util.MySynthesizerListener;
-import com.blueprint.robot.util.MyWakeuperListener;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.RecognizerResult;
@@ -30,11 +33,10 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.SpeechSynthesizer;
-import com.iflytek.cloud.VoiceWakeuper;
 import com.iflytek.cloud.util.ResourceUtil.RESOURCE_TYPE;
-import com.iflytek.cloud.WakeuperResult;
 import com.iflytek.cloud.util.ResourceUtil;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -52,8 +54,6 @@ public class SidebarFragment extends Fragment {
     private SpeechRecognizer mIat;
     // 语音合成对象
     private SpeechSynthesizer mTts;
-    // 语音唤醒对象
-    private VoiceWakeuper mIvw;
     // 识别结果内容
     private String recoString;
     //用于显示对话信息
@@ -62,6 +62,13 @@ public class SidebarFragment extends Fragment {
     private Toast toast;
     //本地发声人
     public static String voicerXtts = "xiaoyan";
+
+    public Handler handler = null;
+    // 在用户和机器对话的时候需要屏蔽唤醒信号，避免打乱用户语音交互时的状态机状态
+    public boolean useWakeup = true;
+    // 用于 destroy 的时候终止线程执行
+    public boolean threadTerminate = false;
+    public Thread thread;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -105,6 +112,7 @@ public class SidebarFragment extends Fragment {
         //线程
         new SidebarFragment.TimeThread().start();
 
+        initWakeUpDevice();
         setVoiceInteraction();
     }
 
@@ -152,6 +160,51 @@ public class SidebarFragment extends Fragment {
             }
         }
     };
+
+    @SuppressLint("HandlerLeak")
+    public void initWakeUpDevice() {
+        threadTerminate = false;
+        handler = new Handler() {
+            public void handleMessage(Message msg) {
+                mTts.startSpeaking("您好，请问有什么能够帮您的吗？", mTtsListener);
+                communicationInfo.setText("您好");
+            }
+        };
+        thread = new listenThread();
+        thread.start();//开启读线程读取串口接收的数据
+    }
+
+    private class listenThread extends Thread {
+
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        public void run() {
+
+            byte[] buffer = new byte[4096];
+            //  清除之前 buffer 里的东西
+            while (CH34xUARTDriverHelper.driver.ReadData(buffer, 4096) != 0) ;
+            // threadTerminate 在 destroy 的时候会终止循环促使 线程终止
+            while (!threadTerminate && CH34xUARTDriverHelper.isOpen) {
+                // 禁用 useWakeup 会停止处理所有唤醒
+                if (!useWakeup) {
+                    // 处理掉buffer里的东西，防止 useWakeup 后之前累积的东西误触唤醒
+                    while (CH34xUARTDriverHelper.driver.ReadData(buffer, 4096) != 0) ;
+                    continue;
+                }
+                Message msg = Message.obtain();
+                // 如果在 buffer 接收了消息
+                if (CH34xUARTDriverHelper.driver.ReadData(buffer, 4096) != 0) {
+                    StringBuilder wakeInfo = new StringBuilder(new String(buffer, StandardCharsets.US_ASCII));
+                    // 串口数据分段传输，需要用一个字符串进行拼接
+                    while (CH34xUARTDriverHelper.driver.ReadData(buffer, 4096) != 0)
+                        wakeInfo.append(new String(buffer, StandardCharsets.US_ASCII));
+                    useWakeup = false;//暂时屏蔽唤醒信号
+                    msg.obj = wakeInfo.toString();
+                    handler.sendMessage(msg);
+                }
+            }
+        }
+    }
+
 
     //获得当前年月日时分秒星期
     public String getTime() {
@@ -210,16 +263,6 @@ public class SidebarFragment extends Fragment {
         }
     };
 
-    //机器人唤醒回调
-    private MyWakeuperListener mWakeuperListener = new MyWakeuperListener() {
-        @Override
-        public void onResult(WakeuperResult result) {
-            mIvw.stopListening();//暂时停止唤醒
-            mTts.startSpeaking("您好，请问有什么能够帮您的吗？", mTtsListener);
-            communicationInfo.setText("您好");
-        }
-    };
-
     //机器人语音合成回调
     private MySynthesizerListener mTtsListener = new MySynthesizerListener() {
         @Override
@@ -270,7 +313,7 @@ public class SidebarFragment extends Fragment {
                     communicationInfo.setText("请问还有什么能够帮您的吗？");
                 } else {
                     exitConfirm = false;
-                    mIvw.startListening(mWakeuperListener);
+                    useWakeup = true;//恢复唤醒信号的使用
                     communicationInfo.setText("对话框");
                 }
             }
@@ -279,30 +322,6 @@ public class SidebarFragment extends Fragment {
 
     //设置机器人的唤醒、语音合成、语音识别能力
     private void setVoiceInteraction() {
-        //设置机器人的语音唤醒功能
-        mIvw = VoiceWakeuper.createWakeuper(this.getActivity(), null);
-        mIvw = VoiceWakeuper.getWakeuper();
-        // 非空判断，防止因空指针使程序崩溃
-        if (mIvw == null) {
-            toastLast("唤醒未初始化,请尝试重新进入程序");
-            return;
-        }
-        // 清空参数
-        mIvw.setParameter(SpeechConstant.PARAMS, null);
-        // 唤醒门限值，根据资源携带的唤醒词个数按照“id:门限;id:门限”的格式传入
-        mIvw.setParameter(SpeechConstant.IVW_THRESHOLD, "0:" + 2000);
-        // 设置唤醒模式
-        mIvw.setParameter(SpeechConstant.IVW_SST, "wakeup");
-        // 持续唤醒支持参数：0：单次唤醒 1：循环唤醒  默认值：0
-        mIvw.setParameter(SpeechConstant.KEEP_ALIVE, "0");
-        // 优化模式支持参数：0：关闭优化功能 1：开启优化功能 默认值：0
-        mIvw.setParameter(SpeechConstant.IVW_NET_MODE, "0");
-        // 设置唤醒资源路径
-        mIvw.setParameter(SpeechConstant.IVW_RES_PATH, getResource());
-        // 设置唤醒录音保存路径，保存最近一分钟的音频
-        mIvw.setParameter(SpeechConstant.IVW_AUDIO_PATH, Environment.getExternalStorageDirectory().getPath() + "/msc/ivw.wav");
-        mIvw.setParameter(SpeechConstant.AUDIO_FORMAT, "wav");
-        mIvw.startListening(mWakeuperListener);
 
         // 设置机器人的语音合成（说话）功能
         mTts = SpeechSynthesizer.createSynthesizer(this.getActivity(), initListener);
@@ -359,12 +378,18 @@ public class SidebarFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        // 切页面的时候不会调用 onDestroy 会调用 onPause 但再切进来的时候会调用onCreate，
+        // 防止多次调用 onCreate 创建多个线程
+        threadTerminate = true;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d("XUNFEI", "onDestroy OneShotDemo");
-        mIvw = VoiceWakeuper.getWakeuper();
-        if (mIvw != null)
-            mIvw.destroy();
+        threadTerminate = true;
         if (null != mTts) {
             mTts.stopSpeaking();
             // 退出时释放连接

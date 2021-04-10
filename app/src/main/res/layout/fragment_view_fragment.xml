@@ -141,6 +141,7 @@
             android:layout_height="0dp"
             android:background="#FCC60D"
             android:contentDescription="TODO"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toTopOf="@+id/guideline20"
             app:layout_constraintEnd_toStartOf="@+id/guideline48"
             app:layout_constraintStart_toStartOf="@+id/scenicName"
