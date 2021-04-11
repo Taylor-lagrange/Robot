@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="popBackgroundColor">#ffffff</color>
+    <color name="selected">#F5F8F7</color>
+    <color name="colorAppTheme">#FCC60D</color>
 </resources>

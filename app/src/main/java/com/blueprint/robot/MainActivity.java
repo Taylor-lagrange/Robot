@@ -14,6 +14,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ import com.blueprint.robot.data.entity.ScenicSpot;
 import com.blueprint.robot.ui.carousel.CarouselFragment;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -66,6 +69,25 @@ public class MainActivity<datetime> extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+        /*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintColor(R.color.colorAppTheme);//此处引用color.xml的资源
+        */
+
+
+        //状态栏透明
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
+
+
+
 
         ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(this).get(ScenicSpotViewModel.class);//通过ScenicSpotViewModel对象获取所有景点信息
         List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
