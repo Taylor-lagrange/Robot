@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <fraction name="percent_themeBar">0.14</fraction>
+    <fraction name="percent_sideBar">0.83</fraction>
+    <fraction name="percent_functionCol">0.07</fraction>
+    <fraction name="percent_powerOff">0.86</fraction>
+</resources>

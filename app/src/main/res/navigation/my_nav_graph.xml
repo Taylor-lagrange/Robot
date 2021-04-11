@@ -27,11 +27,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/carouselFigureFragment"
-        android:name="com.blueprint.robot.ui.carouselfigure.CarouselFigureFragment"
-        android:label="fragment_carousel_figure"
-        tools:layout="@layout/fragment_carousel_figure" />
-    <fragment
         android:id="@+id/fragment_view"
         android:name="com.blueprint.robot.ui.view.fragment_view"
         android:label="fragment_view_fragment"
