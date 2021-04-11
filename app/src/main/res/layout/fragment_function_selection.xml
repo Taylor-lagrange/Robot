@@ -15,37 +15,37 @@
             android:id="@+id/toHomeButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/textview_shape"
-            app:layout_constraintBottom_toTopOf="@+id/guideline19"
+            android:background="#00000000"
+            android:src="@drawable/test1"
+            app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="@+id/toShowButton"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/toShowButton"
             app:layout_constraintTop_toTopOf="@+id/guideline67"
             app:layout_constraintVertical_bias="1.0" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/backbackground_color"
+            app:layout_constraintBottom_toTopOf="@+id/guideline75"
+            app:layout_constraintEnd_toStartOf="@+id/guideline74"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <ImageButton
             android:id="@+id/toShowButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/button_color"
+            android:background="#00000000"
+            android:src="@drawable/test1"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toEndOf="@+id/toGoodsButton"
             app:layout_constraintStart_toStartOf="@+id/toGoodsButton"
-            app:layout_constraintTop_toTopOf="@+id/guideline23"
-            tools:visibility="visible" />
-
-        <ImageButton
-            android:id="@+id/button_photo_taken"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:background="#F5F8F7"
-            android:src="@drawable/backgroud_color"
-            app:layout_constraintBottom_toTopOf="@+id/guideline14"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline13"
+            app:layout_constraintTop_toTopOf="@+id/guideline19"
             tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="390dp"
-            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintGuide_percent="0.06"
             tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -62,11 +62,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="356dp"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/button_photo_taken"
             app:layout_constraintGuide_begin="237dp"
-            app:layout_constraintGuide_percent="0.33"
+            app:layout_constraintGuide_percent="0.35"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
@@ -79,16 +77,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintGuide_begin="760dp"
             app:layout_constraintGuide_percent="0.67"
-            app:layout_constraintTop_toBottomOf="@+id/button_photo_taken"
             tools:visibility="visible" />
 
         <ImageButton
             android:id="@+id/toGoodsButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/textview_shape"
+            android:background="#00000000"
+            android:src="@drawable/test1"
             app:layout_constraintBottom_toTopOf="@+id/guideline25"
-            app:layout_constraintEnd_toStartOf="@+id/guideline69"
+            app:layout_constraintEnd_toStartOf="@+id/guideline77"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline22"
             app:layout_constraintTop_toTopOf="@+id/guideline26"
@@ -97,77 +95,58 @@
 
         <TextView
             android:id="@+id/textView"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderSelection"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:text="景区全览"
             android:textColor="#054123"
-            android:textSize="@android:dimen/app_icon_size"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline19"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="none"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toTopOf="@+id/guideline67"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textView2"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderSelection"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:text="特色商品"
             android:textColor="#054123"
-            android:textSize="@android:dimen/app_icon_size"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="@+id/toGoodsButton"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="none"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
             app:layout_constraintEnd_toStartOf="@+id/guideline27"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline70"
-            app:layout_constraintTop_toTopOf="@+id/guideline26"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
             app:layout_constraintVertical_bias="0.0"
             tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textView5"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderSelection"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:text="定点讲解"
             android:textColor="#054123"
-            android:textSize="@android:dimen/app_icon_size"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline24"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="none"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/toShowButton"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
             app:layout_constraintVertical_bias="0.0"
             tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/currentTime"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:textSize="50sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/button_photo_taken"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/battery" />
-
-        <TextView
-            android:id="@+id/battery"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="机器人电量"
-            android:textColor="#054123"
-            android:textSize="@android:dimen/app_icon_size"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline18"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline15"
@@ -187,7 +166,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="963dp"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline17"
@@ -211,14 +190,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="304dp"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.39" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.18" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline23"
@@ -226,7 +205,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="398dp"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.35" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline24"
@@ -234,7 +213,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="583dp"
-            app:layout_constraintGuide_percent="0.7" />
+            app:layout_constraintGuide_percent="0.54" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline25"
@@ -242,7 +221,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="1028dp"
-            app:layout_constraintGuide_percent="0.95" />
+            app:layout_constraintGuide_percent="0.72" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline26"
@@ -250,7 +229,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="768dp"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_percent="0.57" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline27"
@@ -258,7 +237,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="1139dp"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.65" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline28"
@@ -284,7 +263,9 @@
             android:gravity="center"
             android:text="功能选择"
             android:textColor="#054123"
-            app:autoSizeTextType="uniform"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="none"
             app:layout_constraintBottom_toTopOf="@+id/guideline66"
             app:layout_constraintEnd_toStartOf="@+id/guideline28"
             app:layout_constraintHorizontal_bias="1.0"
@@ -298,7 +279,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="203dp"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.2" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline69"
@@ -306,7 +287,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="1834dp"
-            app:layout_constraintGuide_percent="0.95" />
+            app:layout_constraintGuide_percent="1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline70"
@@ -314,17 +295,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="752dp"
-            app:layout_constraintGuide_percent="0.42" />
+            app:layout_constraintGuide_percent="0.35" />
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/tohomeimage"
-            app:layout_constraintBottom_toTopOf="@+id/guideline19"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toStartOf="@+id/guideline68"
             app:layout_constraintStart_toStartOf="@+id/guideline71"
-            app:layout_constraintTop_toTopOf="@+id/guideline67" />
+            app:layout_constraintTop_toTopOf="@+id/guideline67">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/tohomeimage" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline68"
@@ -332,7 +321,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="710dp"
-            app:layout_constraintGuide_percent="0.38" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline71"
@@ -340,47 +329,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="590dp"
-            app:layout_constraintGuide_percent="0.32" />
+            app:layout_constraintGuide_percent="0.21" />
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/imageView3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/toshowimage"
-            app:layout_constraintBottom_toTopOf="@+id/guideline24"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintEnd_toStartOf="@+id/guideline68"
-            app:layout_constraintStart_toStartOf="@+id/guideline71"
-            app:layout_constraintTop_toTopOf="@+id/guideline23" />
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/textView5">
 
-        <ImageView
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/toshowimage" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/imageView4"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/togoodsimage"
-            app:layout_constraintBottom_toTopOf="@+id/guideline25"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
             app:layout_constraintEnd_toStartOf="@+id/guideline68"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline71"
-            app:layout_constraintTop_toTopOf="@+id/guideline26"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/camera"
-            app:layout_constraintBottom_toBottomOf="@+id/button_photo_taken"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_photo_taken" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/togoodsimage" />
+        </androidx.cardview.widget.CardView>
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#F5F8F7"
+            android:background="#00000000"
+            android:scaleType="centerInside"
             android:src="@drawable/poweroff"
-            app:layout_constraintBottom_toTopOf="@+id/guideline25"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintEnd_toStartOf="@+id/guideline74"
             app:layout_constraintStart_toStartOf="@+id/guideline73"
             app:layout_constraintTop_toTopOf="@+id/guideline15"
@@ -392,7 +390,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="91dp"
-            app:layout_constraintGuide_percent="0.08" />
+            app:layout_constraintGuide_percent="0.005" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline74"
@@ -400,7 +398,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="338dp"
-            app:layout_constraintGuide_percent="0.17" />
+            app:layout_constraintGuide_percent="0.06" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline75"
@@ -418,10 +416,10 @@
             android:text="关机"
             android:textColor="#054123"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline75"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
             app:layout_constraintEnd_toStartOf="@+id/guideline74"
             app:layout_constraintStart_toStartOf="@+id/guideline73"
-            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+            app:layout_constraintTop_toTopOf="@+id/guideline79" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline76"
@@ -429,7 +427,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="1758dp"
-            app:layout_constraintGuide_percent="0.93" />
+            app:layout_constraintGuide_percent="1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline77"
@@ -437,26 +435,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="1624dp"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.88" />
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/jumpimage"
-            app:layout_constraintBottom_toTopOf="@+id/guideline19"
-            app:layout_constraintEnd_toStartOf="@+id/guideline76"
-            app:layout_constraintStart_toStartOf="@+id/guideline77"
-            app:layout_constraintTop_toTopOf="@+id/guideline67" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/jumpimage"
-            app:layout_constraintBottom_toTopOf="@+id/guideline16"
-            app:layout_constraintEnd_toStartOf="@+id/guideline76"
-            app:layout_constraintStart_toStartOf="@+id/guideline77"
+            app:layout_constraintBottom_toTopOf="@+id/guideline25"
+            app:layout_constraintEnd_toEndOf="@+id/imageView8"
+            app:layout_constraintEnd_toStartOf="@+id/guideline77"
+            app:layout_constraintStart_toStartOf="@+id/imageView8"
             app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
         <ImageView
@@ -465,12 +464,96 @@
             android:layout_height="0dp"
             android:src="@drawable/jumpimage"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
-            app:layout_constraintEnd_toStartOf="@+id/guideline76"
+            app:layout_constraintEnd_toEndOf="@+id/imageView9"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline77"
-            app:layout_constraintTop_toTopOf="@+id/guideline23"
+            app:layout_constraintStart_toStartOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/guideline19"
             app:layout_constraintVertical_bias="1.0" />
 
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/backbutton"
+            app:layout_constraintBottom_toTopOf="@+id/guideline18"
+            app:layout_constraintEnd_toStartOf="@+id/guideline74"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="573dp"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline79"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="378dp"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00000000"
+            android:src="@drawable/test1"
+            app:layout_constraintBottom_toTopOf="@+id/guideline79"
+            app:layout_constraintEnd_toStartOf="@+id/guideline77"
+            app:layout_constraintStart_toStartOf="@+id/guideline22"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderSelection"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center_vertical"
+            android:text="拍照"
+            android:textColor="#054123"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline79"
+            app:layout_constraintEnd_toStartOf="@+id/guideline27"
+            app:layout_constraintStart_toStartOf="@+id/guideline70"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/jumpimage"
+            app:layout_constraintBottom_toTopOf="@+id/guideline79"
+            app:layout_constraintEnd_toStartOf="@+id/guideline77"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline78"
+            app:layout_constraintTop_toTopOf="@+id/guideline16"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/camera"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline79"
+            app:layout_constraintEnd_toStartOf="@+id/guideline68"
+            app:layout_constraintStart_toStartOf="@+id/guideline71"
+            app:layout_constraintTop_toTopOf="@+id/guideline16">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/camera" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

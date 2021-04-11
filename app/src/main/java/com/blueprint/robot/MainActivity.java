@@ -1,7 +1,12 @@
 package com.blueprint.robot;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +14,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -26,10 +34,13 @@ import com.blueprint.robot.data.entity.ScenicSpot;
 import com.blueprint.robot.ui.carousel.CarouselFragment;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.wch.ch34xuartdriver.CH34xUARTDriver;
 
 public class MainActivity<datetime> extends AppCompatActivity {
 //    private static final int msgKey1 = 1;
@@ -42,6 +53,8 @@ public class MainActivity<datetime> extends AppCompatActivity {
 //    private TextView datetime;
     private static final int CAROUSEL_MODE = 0x102;
     private boolean isCarousel = false;
+    //用于在屏幕上提示用户程序状态
+    private Toast toast;
 
     @Override
     protected void onResume() {
@@ -56,6 +69,25 @@ public class MainActivity<datetime> extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+        /*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintColor(R.color.colorAppTheme);//此处引用color.xml的资源
+        */
+
+
+        //状态栏透明
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
+
+
+
 
         ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(this).get(ScenicSpotViewModel.class);//通过ScenicSpotViewModel对象获取所有景点信息
         List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
@@ -84,6 +116,29 @@ public class MainActivity<datetime> extends AppCompatActivity {
             }
         }
         setContentView(R.layout.activity_main2);
+
+        CH34xUARTDriverHelper.driver = new CH34xUARTDriver(
+                (UsbManager) getSystemService(Context.USB_SERVICE), this,
+                "com.bupt.robot.USB_PERMISSION");
+        if (!CH34xUARTDriverHelper.isOpen) {
+            int retVal = CH34xUARTDriverHelper.driver.ResumeUsbList();
+            if (retVal == -1)// ResumeUsbList方法用于枚举CH34X设备以及打开相关设备
+            {
+                toastLast("打开设备失败!");
+                CH34xUARTDriverHelper.driver.CloseDevice();
+            } else if (retVal == 0) {
+                if (!CH34xUARTDriverHelper.driver.UartInit()) {//对串口设备进行初始化操作
+                    toastLast("设备初始化失败!打开设备失败");
+                    return;
+                }
+                toastLast("打开设备成功!");
+                CH34xUARTDriverHelper.isOpen = true;
+                CH34xUARTDriverHelper.driver.SetConfig(115200, (byte) 8, (byte) 0, (byte) 0, (byte) 0);
+            } else {
+                toastLast("未授权限");
+            }
+        }
+
         //初始化讯飞SDK，并且请求对应的语音操作权限
         SpeechUtility.createUtility(this, SpeechConstant.APPID + "=" + getString(R.string.app_id));
         requestPermissions();
@@ -240,6 +295,8 @@ public class MainActivity<datetime> extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mHandler.removeCallbacksAndMessages(null);
+        CH34xUARTDriverHelper.driver.CloseDevice();
+        CH34xUARTDriverHelper.isOpen = false;
     }
 
     public void setCarousel(boolean carousel) {
@@ -248,5 +305,16 @@ public class MainActivity<datetime> extends AppCompatActivity {
 
     public void reInitTime() {
         mHandler.sendMessageDelayed(mHandler.obtainMessage(CAROUSEL_MODE), TIME_VALUE);
+    }
+
+    //用于在屏幕上显示提示信息，有多条信息要显示只显示最后一条
+    private void toastLast(String message) {
+        if (message != null) {
+            if (toast != null) {
+                toast.cancel();
+            }
+            toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
