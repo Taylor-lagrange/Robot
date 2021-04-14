@@ -84,7 +84,7 @@ public class CarouselFragment extends Fragment {
         }
     }
 
-    private static class ImageLoadThread extends Thread {
+    private class ImageLoadThread extends Thread {
         private Handler handler;
         private ScenicSpotViewModel carouselViewModel;
         private int position;
@@ -97,7 +97,7 @@ public class CarouselFragment extends Fragment {
         @Override
         public void run() {
             super.run();
-            Bitmap bitmap = carouselViewModel.getPictureScenicSpotList().get(position).getLocalBitmap(0);
+            Bitmap bitmap = carouselViewModel.getPictureScenicSpotList().get(position).getLocalBitmap(CarouselFragment.this.getContext(),0);
             Message message = Message.obtain();
             message.obj = bitmap;
             message.what = LOAD_IMAGE;
@@ -206,7 +206,7 @@ public class CarouselFragment extends Fragment {
             @Override
             public void loadImage(ImageView imageView, int position) {
                 savePicture = imageView;
-                new ImageLoadThread(handler, carouselViewModel, position % picNum);
+                new ImageLoadThread(handler, carouselViewModel, position % picNum).run();
             }
         });
 
@@ -245,7 +245,8 @@ public class CarouselFragment extends Fragment {
                 super.onPageSelected(position);
                 carouselViewModel.setTerm(position / picNum);
                 carouselViewModel.setPosition(position % picNum);
-                tabLayout.setScrollPosition(position % picNum, 0, false);
+                tabLayout.getTabAt(position % picNum).select();
+                //tabLayout.setScrollPosition(position % picNum, 0, false);
             }
 
             @Override

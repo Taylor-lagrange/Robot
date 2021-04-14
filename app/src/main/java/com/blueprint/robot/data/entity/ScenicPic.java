@@ -14,9 +14,9 @@ public class ScenicPic {
     private int scenicId;//scenic spot id indicate the picture belong to
 
     @ColumnInfo(name = "pic_url")
-    private String picUrl;//the file path to the pic store
+    private int picUrl;//the file path to the pic store
 
-    public ScenicPic(int scenicId, String picUrl) {
+    public ScenicPic(int scenicId, int picUrl) {
         this.scenicId = scenicId;
         this.picUrl = picUrl;
     }
@@ -46,11 +46,11 @@ public class ScenicPic {
         this.scenicId = scenicId;
     }
 
-    public String getPicUrl() {
+    public int getPicUrl() {
         return picUrl;
     }
 
-    public void setPicUrl(String picUrl) {
+    public void setPicUrl(int picUrl) {
         this.picUrl = picUrl;
     }
 }

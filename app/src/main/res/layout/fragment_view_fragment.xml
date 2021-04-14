@@ -8,131 +8,322 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/popBackgroundColor">
 
-        <ImageButton
-            android:id="@+id/imageButton_back_View"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginEnd="668dp"
-            android:layout_marginRight="668dp"
-            android:layout_marginBottom="33dp"
-            android:contentDescription="TODO"
-            app:layout_constraintBottom_toTopOf="@+id/scenicImage"
-            app:layout_constraintEnd_toStartOf="@+id/scenicName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
-        <TextView
-            android:id="@+id/scenicName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/景点名称"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline20"
-            app:layout_constraintEnd_toStartOf="@+id/guideline21"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:background="@color/selected"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h4_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v5_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v4_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h3_view">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/viewViewImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/attractionimage1"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h7_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v8_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v7_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h5_view" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView_name_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h9_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v10_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v9_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h8_view">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Constraint_name_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_hh1_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.55" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_vv1_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.12" />
+
+                <TextView
+                    android:id="@+id/textView_openTime_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:paddingEnd="@dimen/textPadding"
+                    android:paddingRight="@dimen/textPadding"
+                    android:text="TextView"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/commonTextSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vv1_view"
+                    app:layout_constraintTop_toTopOf="@+id/guideline_hh1_view"
+                    tools:text="开放时间" />
+
+                <TextView
+                    android:id="@+id/textView_name_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/titleTextSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vv1_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.1"
+                    tools:text="凤凰岭" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView_intro_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h10_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v12_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v11_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h5_view">
+
+            <TextView
+                android:id="@+id/viewViewBriefIntro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_shape"
+                android:gravity="center|center_horizontal"
+                android:text="这里是一大块的介绍，记得要居中哦"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/commonTextSize" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView_suggest_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h2_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v13_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v11_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h11_view">
+
+            <TextView
+                android:id="@+id/textView_suggest_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_shape"
+                android:gravity="center|center_horizontal"
+                android:text="天气\n温度"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/commonTextSize" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView_price_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h2_view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v12_view"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v14_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_h11_view">
+
+            <TextView
+                android:id="@+id/textView_price_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_shape"
+                android:gravity="center|center_horizontal"
+                android:text="景点级别\n票价"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/commonTextSize" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v6_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="715dp"
+            app:layout_constraintGuide_percent="1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h5_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h6_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@fraction/percent_themeBar" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h7_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.72" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v7_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v8_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+        <TextView
+            android:id="@+id/viewViewName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/textview_color"
+            android:gravity="center"
+            android:text="凤凰岭"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/titleTextSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_h6_view"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/scenicImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/robot"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline21"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline20" />
-
-        <TextView
-            android:id="@+id/openTime"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="开放时间"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline31"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toTopOf="@+id/guideline20" />
-
-        <TextView
-            android:id="@+id/introduction"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="简介"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toTopOf="@+id/guideline35" />
-
-        <TextView
-            android:id="@+id/ticketPrice"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="票价"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline34"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toTopOf="@+id/guideline31" />
-
-        <TextView
-            android:id="@+id/suggestedTime"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="建议游玩时间"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline35"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toTopOf="@+id/guideline34" />
-
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline20"
+            android:id="@+id/guideline_h8_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="85dp"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline21"
+            android:id="@+id/guideline_h9_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v9_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="1642dp"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline31"
+            android:id="@+id/guideline_v10_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v11_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v12_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h10_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="225dp"
-            app:layout_constraintGuide_percent="0.2" />
+            app:layout_constraintGuide_percent="0.62" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline34"
+            android:id="@+id/guideline_v13_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h11_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="320dp"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.67" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline35"
+            android:id="@+id/guideline_v14_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.73" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h2_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="473dp"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h3_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h4_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.98" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v4_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v5_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
