@@ -15,5 +15,6 @@
     <string name="text_title_goods">特色产品</string>
     <string name="previous">上一个</string>
     <string name="next">下一个</string>
+    <string name="power_off">关机</string>
 
 </resources>

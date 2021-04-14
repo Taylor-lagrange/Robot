@@ -45,11 +45,18 @@
         tools:layout="@layout/fragment_sidebar" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_h_togoods"
+        android:id="@+id/guideline_h1_togoods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@fraction/percent_themeBar" />
+        app:layout_constraintGuide_percent="@fraction/percent_back_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h2_togoods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@fraction/percent_back_bot" />
 
     <ImageButton
         android:id="@+id/imageButton_back_togoods"
@@ -58,9 +65,23 @@
         android:background="@color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/backbutton"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h_togoods"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1_togoods"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v2_togoods"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="返回"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/commonTextSize"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h2_togoods"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_goods_togoods"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h1_togoods" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

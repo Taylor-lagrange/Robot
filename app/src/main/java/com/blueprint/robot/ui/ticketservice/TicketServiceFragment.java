@@ -47,16 +47,5 @@ public class TicketServiceFragment extends Fragment {
         TicketServiceAdapter adapter = new TicketServiceAdapter(viewModel.getScenicSpotList());
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(adapter);
-
-        //back to home page
-        imageButton = view.findViewById(R.id.imageButton_back_Ticket);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: navigate");
-                NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_ticketServiceFragment_to_homeFragment);//navigate to home page
-            }
-        });
     }
 }
