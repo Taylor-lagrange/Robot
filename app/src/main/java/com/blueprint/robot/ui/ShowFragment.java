@@ -85,7 +85,7 @@ public class ShowFragment extends Fragment {
         final List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
         final View view = getView();
 
-        ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1);
+        ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
         final ImageView imageView = view.findViewById(R.id.showViewImage);
         imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
         final TextView scenicName = view.findViewById(R.id.showViewName);
@@ -103,8 +103,8 @@ public class ShowFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() - 1 + scenicSpotList.size()) % (scenicSpotList.size() + 1));
-                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1);
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() - 1 + scenicSpotList.size()) % scenicSpotList.size());
+                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
                 imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
                 scenicName.setText(currentScenicSpot.getName());
                 nameInCard.setText(currentScenicSpot.getName());
@@ -114,12 +114,12 @@ public class ShowFragment extends Fragment {
             }
         });
 
-            Button button2 = getView().findViewById(R.id.nextViewButton);
+        Button button2 = getView().findViewById(R.id.nextViewButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() + 1) % (scenicSpotList.size()) + 1);
-                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic() - 1);
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() + 1) % scenicSpotList.size());
+                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
                 imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
                 scenicName.setText(currentScenicSpot.getName());
                 nameInCard.setText(currentScenicSpot.getName());
