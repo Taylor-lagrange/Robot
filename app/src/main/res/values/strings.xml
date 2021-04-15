@@ -12,5 +12,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="景点名称">景点名称</string>
     <string name="app_id">602670c2</string>
+    <string name="text_title_goods">特色产品</string>
+    <string name="previous">上一个</string>
+    <string name="next">下一个</string>
+    <string name="power_off">关机</string>
 
 </resources>

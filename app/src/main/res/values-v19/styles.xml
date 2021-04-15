@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="changeBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--和  代码中效果一样-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--恢复状态栏的  位置空间-->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#2B2A2A</item>
+        <!--导航栏上的标题颜色,这里的颜色还可以自己定义喜欢的类型-->
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:textColorPrimary">#7F9D8A</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

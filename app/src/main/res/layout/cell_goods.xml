@@ -2,69 +2,234 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Constraint_goods_cell"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_hh2_goods"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+    android:layout_height="match_parent"
+    android:background="@color/selected">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vv2_goods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.73" />
 
-    <TextView
-        android:id="@+id/textView_title_goods"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="TextView"
-        android:textSize="80sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_hh1_goods"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vv2_goods"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vv1_goods"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv8_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv4_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv5_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv6_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.54" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv7_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vv3_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_hh4_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_hh5_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vv1_goods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.48" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_hh1_goods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_hh3_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
 
     <ImageView
-        android:id="@+id/imageView_goods"
+        android:id="@+id/imageView_pic_goods"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_hh2_goods"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vv2_goods"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vv1_goods"
-        app:layout_constraintTop_toTopOf="@+id/guideline_hh1_goods"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/attractionimage1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hh3_goods"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vv1_goods"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vv5_goods"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hh5_goods" />
 
-    <TextView
-        android:id="@+id/textView_detail_goods"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_intro_goods"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hh4_goods"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vv7_goods"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vv6_goods"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hh5_goods">
+
+        <TextView
+            android:id="@+id/textView_intro_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/textPadding"
+            android:text="TextView"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/commonTextSize"
+            tools:text="绿壳土鸡蛋，高山林间散养，只吃虫草杂粮，蛋白细腻莹白，蛋黄绵密原香" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_name_goods"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hh1_goods"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vv4_goods"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vv3_goods"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hh4_goods">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint_name_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_hh6_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vv9_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.12" />
+
+            <TextView
+                android:id="@+id/textView_pack_goods"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingEnd="@dimen/textPadding"
+                android:paddingRight="@dimen/textPadding"
+                android:text="TextView"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/commonTextSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vv9_goods"
+                app:layout_constraintTop_toTopOf="@+id/guideline_hh6_goods"
+                tools:text="包装：简装    枚数：21-40枚" />
+
+            <TextView
+                android:id="@+id/textView_name_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/titleTextSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vv9_goods"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.15"
+                tools:text="长顺绿壳鸡蛋" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_addr_goods"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hh1_goods"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vv2_goods"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vv1_goods"
-        app:layout_constraintTop_toTopOf="@+id/guideline_hh2_goods" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_vv6_goods"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hh4_goods">
+
+        <TextView
+            android:id="@+id/textView_addr_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/textPadding"
+            android:text="TextView"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/commonTextSize"
+            tools:text="产地：贵州长顺\n保质期：30天" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_save_goods"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hh1_goods"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vv7_goods"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vv8_goods"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hh4_goods">
+
+        <TextView
+            android:id="@+id/textView_save_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/textPadding"
+            android:text="TextView"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/commonTextSize"
+            tools:text="储藏方式：阴凉或冰箱冷藏保鲜" />
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

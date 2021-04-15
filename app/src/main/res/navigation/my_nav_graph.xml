@@ -11,26 +11,9 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_ticketServiceFragment"
-            app:destination="@id/ticketServiceFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_fragment_view"
             app:destination="@id/fragment_view" />
     </fragment>
-    <fragment
-        android:id="@+id/ticketServiceFragment"
-        android:name="com.blueprint.robot.ui.ticketservice.TicketServiceFragment"
-        android:label="fragment_ticket_service"
-        tools:layout="@layout/fragment_ticket_service" >
-        <action
-            android:id="@+id/action_ticketServiceFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/carouselFigureFragment"
-        android:name="com.blueprint.robot.ui.carouselfigure.CarouselFigureFragment"
-        android:label="fragment_carousel_figure"
-        tools:layout="@layout/fragment_carousel_figure" />
     <fragment
         android:id="@+id/fragment_view"
         android:name="com.blueprint.robot.ui.view.fragment_view"

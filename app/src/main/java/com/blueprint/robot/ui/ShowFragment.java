@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import com.blueprint.robot.R;
 import com.blueprint.robot.data.ViewModel.ScenicSpotViewModel;
 import com.blueprint.robot.data.entity.ScenicSpot;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -80,97 +83,49 @@ public class ShowFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         final ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(requireActivity()).get(ScenicSpotViewModel.class);//通过ScenicSpotViewModel对象获取所有景点信息
         final List<ScenicSpot> scenicSpotList = scenicSpotViewModel.getScenicSpotList();
-        final ImageView imageView=getView().findViewById(R.id.showViewImage);
+        final View view = getView();
 
-        if (scenicSpotViewModel.getNumScenic()==1)
-        {
-            imageView.setImageResource(R.drawable.attractionimage1);
-        }
-        else
-        {
-            if (scenicSpotViewModel.getNumScenic()==2)
-            {
-                imageView.setImageResource(R.drawable.attractionimage2);
-            }
-            else
-            {
-                if (scenicSpotViewModel.getNumScenic()==3)
-                {
-                    imageView.setImageResource(R.drawable.attractionimage3);
-                }
-            }
-        }
-        TextView scenicName=getView().findViewById(R.id.showViewName);
-        scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
+        ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
+        final ImageView imageView = view.findViewById(R.id.showViewImage);
+        imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
+        final TextView scenicName = view.findViewById(R.id.showViewName);
+        scenicName.setText(currentScenicSpot.getName());
+        final TextView nameInCard = view.findViewById(R.id.textView_name_show);
+        nameInCard.setText(currentScenicSpot.getName());
+        final TextView openTime = view.findViewById(R.id.textView_openTime_show);
+        openTime.setText("开放时间：" + currentScenicSpot.getStartOpenTime() + " 至 " + currentScenicSpot.getEndOpenTime());
+        final TextView price = view.findViewById(R.id.textView_price_show);
+        price.setText("价格：" + currentScenicSpot.getPrice());
+        final TextView introduction = getView().findViewById(R.id.showViewBriefIntro);
+        introduction.setText(currentScenicSpot.getBriefIntro());
 
-
-
-        TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-        introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
-
-        ImageButton button=getView().findViewById(R.id.lastViewButton);
+        Button button = getView().findViewById(R.id.lastViewButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic()-1+scenicSpotList.size())%(scenicSpotList.size()+1));
-                if (scenicSpotViewModel.getNumScenic()==1)
-                {
-                    imageView.setImageResource(R.drawable.attractionimage1);
-                }
-                else
-                {
-                    if (scenicSpotViewModel.getNumScenic()==2)
-                    {
-                        imageView.setImageResource(R.drawable.attractionimage2);
-                    }
-                    else
-                    {
-                        if (scenicSpotViewModel.getNumScenic()==3)
-                        {
-                            imageView.setImageResource(R.drawable.attractionimage3);
-                        }
-                    }
-                }
-                TextView scenicName=getView().findViewById(R.id.showViewName);
-                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
-
-
-
-                TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() - 1 + scenicSpotList.size()) % scenicSpotList.size());
+                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
+                imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
+                scenicName.setText(currentScenicSpot.getName());
+                nameInCard.setText(currentScenicSpot.getName());
+                openTime.setText("开放时间：" + currentScenicSpot.getStartOpenTime() + " 至 " + currentScenicSpot.getEndOpenTime());
+                price.setText("价格：" + currentScenicSpot.getPrice());
+                introduction.setText(currentScenicSpot.getBriefIntro());
             }
         });
 
-        ImageButton button2=getView().findViewById(R.id.nextViewButton);
+        Button button2 = getView().findViewById(R.id.nextViewButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic()+1)%(scenicSpotList.size())+1);
-                if (scenicSpotViewModel.getNumScenic()==1)
-                {
-                    imageView.setImageResource(R.drawable.attractionimage1);
-                }
-                else
-                {
-                    if (scenicSpotViewModel.getNumScenic()==2)
-                    {
-                        imageView.setImageResource(R.drawable.attractionimage2);
-                    }
-                    else
-                    {
-                        if (scenicSpotViewModel.getNumScenic()==3)
-                        {
-                            imageView.setImageResource(R.drawable.attractionimage3);
-                        }
-                    }
-                }
-                TextView scenicName=getView().findViewById(R.id.showViewName);
-                scenicName.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getName());
-
-
-
-                TextView introduction=getView().findViewById(R.id.showViewBriefIntro);
-                introduction.setText(scenicSpotList.get(scenicSpotViewModel.getNumScenic()-1).getBriefIntro());
+                scenicSpotViewModel.setNumScenic((scenicSpotViewModel.getNumScenic() + 1) % scenicSpotList.size());
+                ScenicSpot currentScenicSpot = scenicSpotList.get(scenicSpotViewModel.getNumScenic());
+                imageView.setImageResource(currentScenicSpot.getScenicPicUrlList().get(0));
+                scenicName.setText(currentScenicSpot.getName());
+                nameInCard.setText(currentScenicSpot.getName());
+                openTime.setText("开放时间：" + currentScenicSpot.getStartOpenTime() + " 至 " + currentScenicSpot.getEndOpenTime());
+                price.setText("票价：" + currentScenicSpot.getPrice());
+                introduction.setText(currentScenicSpot.getBriefIntro());
             }
         });
     }
