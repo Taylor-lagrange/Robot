@@ -48,7 +48,7 @@ public class ToGoodsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        imageButton = view.findViewById(R.id.imageButton_back_goods);
+        imageButton = view.findViewById(R.id.imageButton_back_togoods);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

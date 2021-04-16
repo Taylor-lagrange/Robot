@@ -73,6 +73,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_v2_Carousel"
         app:layout_constraintStart_toStartOf="@+id/guideline_v1_Carousel"
         app:layout_constraintTop_toBottomOf="@+id/ViewPager2_Carousel"
+        app:tabSelectedTextColor="@color/selected_item"
         app:tabGravity="fill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

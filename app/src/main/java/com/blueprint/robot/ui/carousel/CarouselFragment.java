@@ -245,7 +245,8 @@ public class CarouselFragment extends Fragment {
                 super.onPageSelected(position);
                 carouselViewModel.setTerm(position / picNum);
                 carouselViewModel.setPosition(position % picNum);
-                tabLayout.setScrollPosition(position % picNum, 0, false);
+                tabLayout.getTabAt(position % picNum).select();
+                //tabLayout.setScrollPosition(position % picNum, 0, false);
             }
 
             @Override

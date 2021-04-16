@@ -2,13 +2,20 @@ package com.blueprint.robot.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.blueprint.robot.R;
+import com.blueprint.robot.data.ViewModel.ScenicSpotViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,5 +69,26 @@ public class ToHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_to_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final ScenicSpotViewModel viewModel = new ViewModelProvider(requireActivity()).get(ScenicSpotViewModel.class);
+        viewModel.setNumScenic(-1);
+        ImageButton backButton = view.findViewById(R.id.imageButton_back_toHome);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(viewModel.getNumScenic() == -1) {//在全览界面
+                    NavController navController = Navigation.findNavController(view);
+                    navController.navigate(R.id.action_toHomeFragment_to_functionSelectionFragment);
+                } else {
+                    viewModel.setNumScenic(-1);
+                    NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_nav_toHome);
+                    navController.navigateUp();
+                }
+            }
+        });
     }
 }

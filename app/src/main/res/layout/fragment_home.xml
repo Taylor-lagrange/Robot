@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/popBackgroundColor"
+    android:background="@color/selected"
     tools:context=".ui.Home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +20,8 @@
             android:text="神泉潮井"
             android:textColor="#054123"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
-            app:layout_constraintEnd_toStartOf="@+id/guideline43"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v8_show"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline46" />
 
         <Button
@@ -32,7 +32,7 @@
             android:text="神泉驿站"
             android:textColor="#054123"
             app:layout_constraintBottom_toTopOf="@+id/guideline10"
-            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v8_show"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
@@ -44,7 +44,7 @@
             android:text="粉黛草观赏区"
             android:textColor="#054123"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline43"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_v8_show"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
@@ -108,43 +108,41 @@
             app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline43"
+            android:id="@+id/guideline_v8_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="77dp"
-            app:layout_constraintGuide_percent="0.08" />
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline45"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="597dp"
-            app:layout_constraintGuide_percent="0.92" />
+            app:layout_constraintGuide_percent="0.9" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline46"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="50dp"
-            app:layout_constraintGuide_percent="0.16" />
+            app:layout_constraintGuide_percent="@fraction/percent_themeBar" />
 
         <TextView
             android:id="@+id/currentTime_Sidebar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#FCC60D"
-            android:gravity="center|center_horizontal"
+            android:gravity="center"
             android:text="景区全览"
             android:textColor="#054123"
             android:textSize="25sp"
-            app:autoSizeTextType="uniform"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline46"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -154,20 +152,8 @@
             android:src="@drawable/homebackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline45"
-            app:layout_constraintStart_toStartOf="@+id/guideline43"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v8_show"
             app:layout_constraintTop_toTopOf="@+id/guideline46" />
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#00000000"
-            android:scaleType="centerInside"
-            android:src="@drawable/backbutton"
-            app:layout_constraintBottom_toTopOf="@+id/guideline46"
-            app:layout_constraintEnd_toStartOf="@+id/guideline43"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

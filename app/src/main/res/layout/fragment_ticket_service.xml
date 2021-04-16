@@ -151,16 +151,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.16" />
 
-    <ImageButton
-        android:id="@+id/imageButton_back_Ticket"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="#00000000"
-        android:contentDescription="@string/image_back_ticket"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h3_Ticket"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v1_Ticket"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

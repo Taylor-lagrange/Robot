@@ -82,9 +82,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final Button storeButton,ticketButton,attraction1Button,attraction2Button,attraction3Button;
+        final Button storeButton,attraction1Button,attraction2Button,attraction3Button;
+        //final Button ticketButton;
         storeButton=getView().findViewById(R.id.storeButton);
-        ticketButton=getView().findViewById(R.id.ticketButton);
+//        ticketButton=getView().findViewById(R.id.ticketButton);
         attraction1Button=getView().findViewById(R.id.attraction1);
         attraction2Button=getView().findViewById(R.id.attraction2);
         attraction3Button=getView().findViewById(R.id.attraction3);
@@ -109,34 +110,34 @@ public class HomeFragment extends Fragment {
                 });
             }
         });
-        ticketButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.pop_layout, null,false);
-                final PopupWindow PopupWindow=new PopupWindow(contentView, ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT,true);
-                PopupWindow.setTouchable(true);
-                TextView title= PopupWindow.getContentView().findViewById(R.id.popTitle);
-                title.setText("售票厅");
-                PopupWindow.showAsDropDown(attraction1Button,600,0);
-                Button backButton=PopupWindow.getContentView().findViewById(R.id.popBackButton);
-                Button introduceButton=PopupWindow.getContentView().findViewById(R.id.popIntroduceButton);
-                backButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PopupWindow.dismiss();
-                    }
-                });
-                introduceButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PopupWindow.dismiss();
-                            View v= getView();
-                            NavController controller = Navigation.findNavController(v);
-                            controller.navigate(R.id.action_homeFragment_to_ticketServiceFragment);
-                    }
-                });
-            }
-        });
+//        ticketButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.pop_layout, null,false);
+//                final PopupWindow PopupWindow=new PopupWindow(contentView, ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT,true);
+//                PopupWindow.setTouchable(true);
+//                TextView title= PopupWindow.getContentView().findViewById(R.id.popTitle);
+//                title.setText("售票厅");
+//                PopupWindow.showAsDropDown(attraction1Button,600,0);
+//                Button backButton=PopupWindow.getContentView().findViewById(R.id.popBackButton);
+//                Button introduceButton=PopupWindow.getContentView().findViewById(R.id.popIntroduceButton);
+//                backButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        PopupWindow.dismiss();
+//                    }
+//                });
+//                introduceButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        PopupWindow.dismiss();
+//                            View v= getView();
+//                            NavController controller = Navigation.findNavController(v);
+//                            controller.navigate(R.id.action_homeFragment_to_ticketServiceFragment);
+//                    }
+//                });
+//            }
+//        });
         attraction1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

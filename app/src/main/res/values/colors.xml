@@ -6,4 +6,7 @@
     <color name="popBackgroundColor">#ffffff</color>
     <color name="selected">#F5F8F7</color>
     <color name="colorAppTheme">#FCC60D</color>
+    <color name="textColor">#054123</color>
+    <color name="transparent">#00FF0000</color>
+    <color name="selected_item">#7F9D8A</color>
 </resources>
