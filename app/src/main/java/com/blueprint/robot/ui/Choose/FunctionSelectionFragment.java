@@ -73,7 +73,7 @@ public class FunctionSelectionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 final ScenicSpotViewModel scenicSpotViewModel = new ViewModelProvider(requireActivity()).get(ScenicSpotViewModel.class);
-                scenicSpotViewModel.setNumScenic(1);
+                scenicSpotViewModel.setNumScenic(0);
                 NavController controller = Navigation.findNavController(view);
                 controller.navigate(R.id.action_functionSelectionFragment_to_toShowFragment);
             }
